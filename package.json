@@ -1,22 +1,32 @@
 {
     "name": "portner-desktop",
+    "description": "Portner Desktop is a GUI tool to store, suggest the ports you're going to use for your docker.",
+    "author": "Syed Sirajul Islam Anik",
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
         "electron": "^3.0.5",
-        "react-scripts": "2.0.5"
+        "react-scripts": "2.0.5",
+        "electron-builder": "^20.15.1",
+        "prettier": "^1.4.4",
+        "wait-on": "2.1.0"
     },
     "dependencies": {
+        "cross-env": "5.1.6",
+        "electron-is-dev": "0.3.0",
         "react": "^16.5.2",
         "react-dom": "^16.5.2"
     },
-    "main": "src/electron-starter.js",
+    "main": "public/electron.js",
+    "homepage": "./",
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject",
-        "electron": "electron ."
+        "react-start": "react-scripts start",
+        "react-build": "react-scripts build",
+        "react-test": "react-scripts test --env=jsdom",
+        "electron": "electron src/electron-starter.js",
+        "release": "npm react-build && electron-builder --publish=always",
+        "build": "npm react-build && npm electron-build",
+        "start": "npm run electron"
     },
     "eslintConfig": {
         "extends": "react-app"
